@@ -1,0 +1,12 @@
+<nav class="bg-blue-600 p-4 shadow-lg">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="{% url 'home' %}" class="text-white text-2xl font-bold">OMDB Explorer</a>
+    <form action="{% url 'search_results' %}" method="GET" class="flex items-center">
+      <input type="text" name="q" placeholder="Search movies..." class="px-4 py-2 rounded-l-lg focus:outline-none w-64"
+        value="{{ request.GET.q }}">
+      <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded-r-lg hover:bg-blue-800">
+        Search
+      </button>
+    </form>
+  </div>
+</nav>

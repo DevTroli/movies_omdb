@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-md p-6">
+  <div class="flex flex-col md:flex-row gap-8">
+    <img src="{{ movie.Poster }}" alt="{{ movie.Title }}" class="w-full md:w-1/3 rounded-lg">
+
+    <div class="flex-1">
+      <h1 class="text-3xl font-bold mb-4">{{ movie.Title }}</h1>
+      <div class="space-y-2">
+        <p><span class="font-semibold">Year:</span> {{ movie.Year }}</p>
+        <p><span class="font-semibold">Genre:</span> {{ movie.Genre }}</p>
+        <p><span class="font-semibold">Director:</span> {{ movie.Director }}</p>
+        <p><span class="font-semibold">Actors:</span> {{ movie.Actors }}</p>
+        <p><span class="font-semibold">Plot:</span> {{ movie.Plot }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">Similar Movies</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {% for movie in similar_movies %}
+      <div class="bg-gray-50 rounded-lg p-4 shadow-sm">
+        <img src="{{ movie.Poster }}" alt="{{ movie.Title }}" class="w-full h-32 object-cover rounded mb-2">
+        <h3 class="font-semibold">{{ movie.Title }}</h3>
+        <p class="text-sm text-gray-600">{{ movie.Year }}</p>
+        <a href="{% url 'movie_detail' movie.imdbID %}" class="text-blue-600 hover:underline mt-2 block">Details</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
